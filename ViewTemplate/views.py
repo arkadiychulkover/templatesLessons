@@ -62,3 +62,16 @@ def products(request):
 
 def style(request):
     return TemplateResponse(request, "main_page.html")
+
+def hello_world_eng(request):
+    return TemplateResponse(request, "helloWorldEng.html")
+
+def hello_world(request, lan):
+    if lan == "es":
+        return TemplateResponse(request, "helloWorldEs.html")
+    elif lan == "fr":
+        return TemplateResponse(request, "helloWorldFr.html")
+    elif lan == "de":
+        return TemplateResponse(request, "helloWorldDe.html")
+    else:
+        return TemplateResponse(request, "helloWorldEng.html")

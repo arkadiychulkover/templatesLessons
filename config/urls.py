@@ -16,8 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from ViewTemplate import views
 
 urlpatterns = [
    # path('admin/', admin.site.urls),
-   path("templates/", include("ViewTemplate.urls"))
+   path("templates/", include("ViewTemplate.urls")),
+   path("", views.hello_world_eng, name="index"),
+   path("<str:lan>/", views.hello_world, name="helloWorld"),
 ]

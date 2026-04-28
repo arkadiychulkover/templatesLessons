@@ -58,7 +58,8 @@ TEMPLATES = [
         'DIRS': [BASE_DIR / "ViewTemplate\\templates",
                  BASE_DIR / "ViewTemplate\\templates\\first_example",
                  BASE_DIR / "ViewTemplate\\templates\\second_example",
-                 BASE_DIR / "ViewTemplate\\templates\\practika"],
+                 BASE_DIR / "ViewTemplate\\templates\\practika",
+                 BASE_DIR / "ViewTemplate\\templates\\HelloWorld"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
