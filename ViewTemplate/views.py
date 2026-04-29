@@ -75,3 +75,15 @@ def hello_world(request, lan):
         return TemplateResponse(request, "helloWorldDe.html")
     else:
         return TemplateResponse(request, "helloWorldEng.html")
+
+def sport_index(request):
+    return TemplateResponse(request, "Main.html")
+
+def football(request):
+    return TemplateResponse(request, "football.html")
+
+def hockey(request):
+    return TemplateResponse(request, "hockey.html")
+
+def basketball(request):
+    return TemplateResponse(request, "basketball.html")

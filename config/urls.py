@@ -21,6 +21,10 @@ from ViewTemplate import views
 urlpatterns = [
    # path('admin/', admin.site.urls),
    path("templates/", include("ViewTemplate.urls")),
-   path("", views.hello_world_eng, name="index"),
-   path("<str:lan>/", views.hello_world, name="helloWorld"),
+   # path("", views.hello_world_eng, name="index"),
+   # path("<str:lan>/", views.hello_world, name="helloWorld"),
+   path("", views.sport_index, name="index"),
+   path("football/", views.football, name="football"),
+   path("hockey/", views.hockey, name="hockey"),
+   path("basketball/", views.basketball, name="basketball"),
 ]
