@@ -60,6 +60,8 @@ TEMPLATES = [
                  BASE_DIR / "ViewTemplate\\templates\\second_example",
                  BASE_DIR / "ViewTemplate\\templates\\practika",
                  BASE_DIR / "ViewTemplate\\templates\\Sport",
+                 BASE_DIR / "ViewTemplate\\templates\\TimeDz",
+                 BASE_DIR / "ViewTemplate\\templates\\RecipesDz",
                  BASE_DIR / "ViewTemplate\\templates\\HelloWorld"],
         'APP_DIRS': True,
         'OPTIONS': {

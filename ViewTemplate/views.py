@@ -1,3 +1,5 @@
+import datetime
+
 from django.shortcuts import render
 from django.template.response import TemplateResponse
 # Create your views here.
@@ -87,3 +89,39 @@ def hockey(request):
 
 def basketball(request):
     return TemplateResponse(request, "basketball.html")
+
+def time(request):
+    hour = datetime.datetime.now().hour
+    msg = ""
+
+    if hour >= 0 and hour < 12:
+        msg = "Good Morning"
+    elif hour >= 12 and hour < 18:
+        msg = "Good Afternoon"
+    elif hour >= 18 and hour < 24:
+        msg = "Good Evening"
+
+    return TemplateResponse(request, "time.html", {"time":msg})
+
+def recipes(request):
+    recipe = request.GET.get("recipe")
+
+    recipes = {
+        "goulash": {
+            "title": "Гуляш",
+            "text": "Яловичина, цибуля, паприка, тушкувати 2 години."
+        },
+        "dumplings": {
+            "title": "Вареники",
+            "text": "Тісто, картопля або вишні, відварити у воді."
+        }
+    }
+
+    context = {}
+
+    if recipe in recipes:
+        context["recipe"] = recipes[recipe]
+    else:
+        context["recipe"] = None
+
+    return TemplateResponse(request, "recipes.html", context)

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  {% if recipe %}
+    <h2>{{ recipe.title }}</h2>
+    <p>{{ recipe.text }}</p>
+  {% else %}
+      <p>Recipe not found</p>
+  {% endif %}
+</body>
+</html>
