@@ -1,7 +1,7 @@
 {% extends "forms_layout.html" %}
 
 {% block form_content %}
-  <form method="post" action="{% url 'seller_page' %}">
+  <form method="post" action="{% url 'seller_form' %}">
     {% csrf_token %}
     <p>Name:</p>
     <input name="name" placeholder="Name">
