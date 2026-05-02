@@ -1,0 +1,19 @@
+{% extends "forms_layout.html" %}
+
+{% block form_content %}
+  <form method="post" action="{% url 'sales_form' %}">
+    {% csrf_token %}
+    <p>Buyer:</p>
+    <input name="buyer" placeholder="Buyer">
+    <p>Seller:</p>
+    <input name="seller" placeholder="Seller">
+    <p>Product:</p>
+    <input name="product" placeholder="Product">
+    <p>Sale date:</p>
+    <input type="date" name="sale_date">
+    <p>Sale amount:</p>
+    <input type="number" step="0.01" name="sale_amount" placeholder="0.00">
+    <button type="submit">Submit</button>
+  </form>
+{% endblock form_content %}
+

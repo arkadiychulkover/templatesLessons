@@ -1,0 +1,12 @@
+{% extends "forms_layout.html" %}
+
+{% block form_content %}
+  <form method="post" action="{% url 'product_form' %}">
+    {% csrf_token %}
+    <p>Product name:</p>
+    <input name="product_name" placeholder="Product name">
+    <p>Product description:</p>
+    <textarea name="product_description" placeholder="Product description"></textarea>
+    <button type="submit">Submit</button>
+  </form>
+{% endblock form_content %}

@@ -1,0 +1,17 @@
+{% extends "forms_layout.html" %}
+
+{% block form_content %}
+  <form method="post" action="{% url 'seller_form' %}">
+    {% csrf_token %}
+
+    <p>Name:</p>
+    <input name="name" placeholder="Name">
+    <p>Surname:</p>
+    <input name="surname" placeholder="Surname">
+    <p>Contact phone:</p>
+    <input name="phone" placeholder="+380...">
+    <p>Email:</p>
+    <input name="email" placeholder="example@gmail.com">
+    <button type="submit">Register</button>
+  </form>
+{% endblock form_content %}

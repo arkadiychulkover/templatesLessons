@@ -21,6 +21,7 @@ from ViewTemplate import views
 urlpatterns = [
    # path('admin/', admin.site.urls),
    path("templates/", include("ViewTemplate.urls")),
+   path("forms/", include("formsApp.urls")),
    # path("", views.hello_world_eng, name="index"),
    # path("<str:lan>/", views.hello_world, name="helloWorld"),
    # path("", views.sport_index, name="index"),

@@ -1,0 +1,24 @@
+{% extends "forms_layout.html" %}
+
+{% block form_content %}
+  <form method="post" action="{% url 'seller_page' %}">
+    {% csrf_token %}
+    <p>Name:</p>
+    <input name="name" placeholder="Name">
+    <p>Surname:</p>
+    <input name="surname" placeholder="Surname">
+    <p>Contact phone:</p>
+    <input name="phone" placeholder="+380...">
+    <p>Email:</p>
+    <input name="email" placeholder="example@gmail.com">
+    <p>Employment date:</p>
+    <input type="date" name="employment_date">
+    <p>Position:</p>
+    <select name="position">
+      <option value="seller">Seller</option>
+      <option value="senior_seller">Senior Seller</option>
+      <option value="head_of_sales">Head of Sales Department</option>
+    </select>
+    <button type="submit">Register</button>
+  </form>
+{% endblock form_content %}

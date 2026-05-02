@@ -1,0 +1,18 @@
+{% extends "forms_layout.html" %}
+
+{% block form_content %}
+  <h1>User information</h1>
+  {% if error_message is None %}
+    <p>Name: {{ name }}</p>
+    <p>Surname: {{ surname }}</p>
+    <p>Languages:
+      {% if languages %}
+        {{ languages|join:", " }}
+      {% else %}
+        Not provided
+      {% endif %}
+    </p>
+  {% else %}
+    <p style="color: red;">Error: {{ error_message }}</p>
+  {% endif %}
+{% endblock form_content %}
