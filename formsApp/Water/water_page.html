@@ -1,30 +1,21 @@
 {% extends "forms_layout.html" %}
 
 {% block form_content %}
+  <h1>Water Order Result</h1>
 
-<h1>Order summary</h1>
+  <div style="margin: 20px 0; padding: 20px; border: 1px solid #ccc;">
+    <p><strong>Name:</strong> {{ name }} {{ surname }}</p>
+    <p><strong>Email:</strong> {{ email }}</p>
+    <p><strong>Phone:</strong> {{ phone }}</p>
+    <p><strong>Address:</strong> {{ address }}</p>
+    <p><strong>Delivery Period:</strong> {{ months }} month(s)</p>
+    <p><strong>Bottle Volume:</strong> {{ volume }} liters</p>
+    {% if notes %}
+      <p><strong>Notes:</strong> {{ notes }}</p>
+    {% endif %}
+  </div>
 
-<p>Name: {{ name }}</p>
-<p>Surname: {{ surname }}</p>
-<p>Email: {{ email }}</p>
-<p>Phone: {{ phone }}</p>
-<p>Address: {{ address }}</p>
-
-<p>Delivery months:
-  {% if months == "1" %}One month
-  {% elif months == "3" %}Three months
-  {% elif months == "6" %}Six months
-  {% elif months == "12" %}Twelve months
-  {% endif %}
-</p>
-
-<p>Bottle volume:
-  {% if volume == "5" %}5 liters
-  {% elif volume == "10" %}10 liters
-  {% elif volume == "15" %}15 liters
-  {% endif %}
-</p>
-
-<p>Notes: {{ notes }}</p>
-
+  <a href="{% url 'postwater' %}" class="waves-effect waves-light btn">
+    Back to Form
+  </a>
 {% endblock form_content %}

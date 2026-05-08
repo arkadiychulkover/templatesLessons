@@ -8,29 +8,37 @@ choices = [
 ]
 
 class UserForm(forms.Form):
-    # field_order = [
-    #     "name",
-    #     "surname",
-    #     "email",
-    #     "phone",
-    #     "password",
-    #     "set_lang",
-    #     "lang",
-    #     "about"
-    # ]
-
-
-    f_name = forms.CharField(initial='John', label="namee", widget=forms.TextInput(attrs={'class':'validate', 'placeholder':'Enter your name'}) )
-    name = forms.CharField(initial="John", label="Name")
-    age_field = forms.IntegerField(initial=18, min_value=18, max_value=100, label="Age")
+    f_name = forms.CharField(
+        initial='John',
+        label="Name",
+        widget=forms.TextInput(attrs={
+            'class': 'validate',
+            'placeholder': 'Enter your name'
+        })
+    )
+    name = forms.CharField(initial="John", label="Full Name")
+    age_field = forms.IntegerField(
+        initial=18,
+        min_value=18,
+        max_value=100,
+        label="Age"
+    )
     surname = forms.CharField(initial="Smith", label="Surname")
     email = forms.EmailField(label="Email")
     phone = forms.CharField(label="Contact phone")
-    password = forms.CharField(widget=forms.PasswordInput, label="Enter password")
-    set_lang = forms.ChoiceField(choices=choices, label="Preferred language")
+    password = forms.CharField(
+        widget=forms.PasswordInput,
+        label="Enter password"
+    )
+    set_lang = forms.ChoiceField(
+        choices=choices,
+        label="Preferred language"
+    )
     lang = forms.MultipleChoiceField(choices=choices)
-    about = forms.CharField(widget=forms.Textarea, label="About")
-
+    about = forms.CharField(
+        widget=forms.Textarea,
+        label="About"
+    )
     avatar = forms.ImageField(label="Avatar", required=False)
 
     error_css_class = "error-text"
@@ -44,6 +52,7 @@ class UserForm(forms.Form):
 
     def clean(self):
         return super().clean()
+
 
 choices_months = [
     (1, 'One month'),
@@ -60,18 +69,24 @@ choices_volume = [
 
 
 class WaterForm(forms.Form):
-
     name = forms.CharField(initial="John", label="Name")
     surname = forms.CharField(initial="Smith", label="Surname")
-
     email = forms.EmailField(label="Email")
     phone = forms.CharField(label="Phone")
     address = forms.CharField(label="Address")
-
-    months = forms.ChoiceField(choices=choices_months, label="Delivery months")
-    volume = forms.ChoiceField(choices=choices_volume, label="Bottle volume")
-
-    notes = forms.CharField(required=False, widget=forms.Textarea, label="Notes")
+    months = forms.ChoiceField(
+        choices=choices_months,
+        label="Delivery months"
+    )
+    volume = forms.ChoiceField(
+        choices=choices_volume,
+        label="Bottle volume"
+    )
+    notes = forms.CharField(
+        required=False,
+        widget=forms.Textarea,
+        label="Notes"
+    )
 
     def clean_email(self):
         data = self.cleaned_data['email']

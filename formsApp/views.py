@@ -9,35 +9,16 @@ import os
 
 userForm = UserForm()
 
+
 def current_time():
     return str(int(datetime.timestamp(datetime.now())))
+
 
 def index(request):
     return render(request, "django_form.html", {"forms": forms.UserForm()})
 
 
-# def postuser(request):
-#     if request.method == "POST":
-#         name = request.POST.get("name", "")
-#         surname = request.POST.get("surname", "")
-#         languages = request.POST.getlist("languages")
-#         password = request.POST.get("password", "")
-#
-#         if len(name) < 3 or len(surname) < 3:
-#             return render(request, "user_page.html", {
-#                 "error_message": "Please enter a name and surname (min 3 characters)"
-#             })
-#
-#         return render(request, "user_page.html", {
-#             "name": name,
-#             "surname": surname,
-#             "languages": languages
-#         })
-#
-#     return render(request, "form_page.html", {"form": forms.UserForm()})
-
-
-def postuser(request:HttpRequest):
+def postuser(request: HttpRequest):
     if request.method == "POST":
         form = forms.UserForm(request.POST, request.FILES)
         print("POST")
@@ -48,26 +29,35 @@ def postuser(request:HttpRequest):
             surname = form.cleaned_data.get("surname", "")
             avatar = form.cleaned_data.get("avatar", "")
             print("Avatar")
-            fs = FileSystemStorage(location=settings.MEDIA_ROOT)
-            file_type = avatar.name.split(".")[1]
-            file_name = fs.save(f"{current_time()}.{file_type}", avatar)
 
-            return render(request, "user_page.html", {"name": name, "surname": surname, "imageUrl": fs.url(file_name)})
+            if avatar:
+                fs = FileSystemStorage(location=settings.MEDIA_ROOT)
+                file_type = avatar.name.split(".")[-1]
+                file_name = fs.save(f"{current_time()}.{file_type}", avatar)
+                image_url = fs.url(file_name)
+            else:
+                image_url = None
+
+            return render(request, "user_page.html", {
+                "name": name,
+                "surname": surname,
+                "imageUrl": image_url
+            })
 
         global userForm
         userForm = form
-        return render("form_page")
-
+        return render(request, "django_form.html", {"forms": form})
 
     else:
-        return HttpResponseNotAllowed("not allowed")
+        return render(request, "django_form.html", {"forms": forms.UserForm()})
 
 
 def postwater(request: HttpRequest):
     if request.method == "GET":
-        return render(request, "django.html", {"form": forms.WaterForm()})
+        return render(request, "water_form.html", {"form": forms.WaterForm()})
 
     if request.method == "POST":
+        # Просто получаем данные из формы
         name = request.POST.get("name", "")
         surname = request.POST.get("surname", "")
         email = request.POST.get("email", "")
@@ -75,13 +65,17 @@ def postwater(request: HttpRequest):
         address = request.POST.get("address", "")
         months = request.POST.get("months", "")
         volume = request.POST.get("volume", "")
+        notes = request.POST.get("notes", "")
 
+        # Простая валидация
         if len(name) < 2 or len(surname) < 2:
-            return render(request, "form_page.html", {
+            return render(request, "water_form.html", {
+                "form": forms.WaterForm(request.POST),
                 "error_message": "Name and surname must be at least 2 characters"
             })
 
-        request.session["water_data"] = {
+        # Сразу показываем результат БЕЗ сохранения в сессию
+        return render(request, "water_page.html", {
             "name": name,
             "surname": surname,
             "email": email,
@@ -89,18 +83,16 @@ def postwater(request: HttpRequest):
             "address": address,
             "months": months,
             "volume": volume,
-            "notes": request.POST.get("notes", "")
-        }
-        return redirect("water_result")
+            "notes": notes
+        })
 
     return HttpResponseNotAllowed(["GET", "POST"])
 
 
 def water_result(request: HttpRequest):
-    data = request.session.get("water_data", None)
-    if not data:
-        return redirect("postwater")
-    return render(request, "water_page.html", data)
+    # Этот view теперь не нужен, но оставим для совместимости
+    return redirect("postwater")
+
 
 def user_form(request):
     if request.method == "POST":

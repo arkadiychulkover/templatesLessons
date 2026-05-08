@@ -63,6 +63,7 @@ TEMPLATES = [
                  BASE_DIR / "ViewTemplate\\templates\\TimeDz",
                  BASE_DIR / "ViewTemplate\\templates\\RecipesDz",
                  BASE_DIR / "formsApp\\templates",
+                 BASE_DIR / "formsApp\\Water",
                  BASE_DIR / "formsApp\\market",
                  BASE_DIR / "ViewTemplate\\templates\\HelloWorld"],
         'APP_DIRS': True,
