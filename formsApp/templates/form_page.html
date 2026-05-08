@@ -1,7 +1,7 @@
 {% extends "forms_layout.html" %}
 
 {% block form_content %}
-  <form method="post" action="{% url 'simple_form' %}">
+  <form method="post" action="{% url 'simple_form' %}" enctype="multipart/form-data">
     {% csrf_token %}
     <p>Name:</p>
     <input name="name" placeholder="Name">

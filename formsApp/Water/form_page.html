@@ -1,17 +1,112 @@
 {% extends "forms_layout.html" %}
 
 {% block form_content %}
-  <form method="post" action="{% url 'simple_form' %}" enctype="multipart/form-data">
+  <form method="post" action="{% url 'postwater' %}">
     {% csrf_token %}
-    <p>Name:</p>
-    <input name="name" placeholder="Name">
-    <p>Surname:</p>
-    <input name="surname" placeholder="Surname">
-    <p>Languages:</p>
-    <input name="languages" placeholder="Lan 1">
-    <input name="languages" placeholder="Lan 2">
-    <input name="languages" placeholder="Lan 3">
-    <input name="languages" placeholder="Lan 4">
-    <button type="submit">Register</button>
+
+    <div class="row">
+      <div class="input-field col s12">
+        <input type="text" name="name" id="name" placeholder=" " required>
+        <label for="name">First name</label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s12">
+        <input type="text" name="surname" id="surname" placeholder=" " required>
+        <label for="surname">Last name</label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s12">
+        <input type="email" name="email" id="email" placeholder=" " required>
+        <label for="email">Email</label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s12">
+        <input type="tel" name="phone" id="phone" placeholder=" " required>
+        <label for="phone">Phone number</label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s12">
+        <input type="text" name="address" id="address" placeholder=" " required>
+        <label for="address">Address</label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col s12">
+        <p>Water delivery duration (months):</p>
+        <p>
+          <label>
+            <input name="months" type="radio" value="1" required/>
+            <span>One month</span>
+          </label>
+        </p>
+        <p>
+          <label>
+            <input name="months" type="radio" value="3"/>
+            <span>Three months</span>
+          </label>
+        </p>
+        <p>
+          <label>
+            <input name="months" type="radio" value="6"/>
+            <span>Six months</span>
+          </label>
+        </p>
+        <p>
+          <label>
+            <input name="months" type="radio" value="12"/>
+            <span>Twelve months</span>
+          </label>
+        </p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col s12">
+        <p>Water bottle volume:</p>
+        <p>
+          <label>
+            <input name="volume" type="radio" value="5" required/>
+            <span>5 liters</span>
+          </label>
+        </p>
+        <p>
+          <label>
+            <input name="volume" type="radio" value="10"/>
+            <span>10 liters</span>
+          </label>
+        </p>
+        <p>
+          <label>
+            <input name="volume" type="radio" value="15"/>
+            <span>15 liters</span>
+          </label>
+        </p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s12">
+        <textarea name="notes" id="notes" class="materialize-textarea" placeholder=" "></textarea>
+        <label for="notes">Notes</label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col s12">
+        <button class="btn waves-effect waves-light" type="submit">
+          Order
+          <i class="material-icons right">send</i>
+        </button>
+      </div>
+    </div>
   </form>
 {% endblock form_content %}

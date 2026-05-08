@@ -1,10 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends "forms_layout.html" %}
+{% block form_content %}
+  <form method="post" enctype="multipart/form-data" action="{% url 'simple_form' %}" novalidate>
+    {% csrf_token %}
+    {{ forms.as_p }}
+    <button class="waves-effect waves-light-red accent-3 btn" type="submit">Register</button>
+    <i class="material-icons left">open in view</i>
+  </form>
+{% endblock form_content %}

@@ -1,10 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends "forms_layout.html" %}
+
+{% block form_content %}
+
+<h1>Order summary</h1>
+
+<p>Name: {{ name }}</p>
+<p>Surname: {{ surname }}</p>
+<p>Email: {{ email }}</p>
+<p>Phone: {{ phone }}</p>
+<p>Address: {{ address }}</p>
+
+<p>Delivery months:
+  {% if months == "1" %}One month
+  {% elif months == "3" %}Three months
+  {% elif months == "6" %}Six months
+  {% elif months == "12" %}Twelve months
+  {% endif %}
+</p>
+
+<p>Bottle volume:
+  {% if volume == "5" %}5 liters
+  {% elif volume == "10" %}10 liters
+  {% elif volume == "15" %}15 liters
+  {% endif %}
+</p>
+
+<p>Notes: {{ notes }}</p>
+
+{% endblock form_content %}
