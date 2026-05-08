@@ -67,14 +67,12 @@ def postwater(request: HttpRequest):
         volume = request.POST.get("volume", "")
         notes = request.POST.get("notes", "")
 
-        # Простая валидация
         if len(name) < 2 or len(surname) < 2:
             return render(request, "water_form.html", {
                 "form": forms.WaterForm(request.POST),
                 "error_message": "Name and surname must be at least 2 characters"
             })
 
-        # Сразу показываем результат БЕЗ сохранения в сессию
         return render(request, "water_page.html", {
             "name": name,
             "surname": surname,
@@ -90,7 +88,6 @@ def postwater(request: HttpRequest):
 
 
 def water_result(request: HttpRequest):
-    # Этот view теперь не нужен, но оставим для совместимости
     return redirect("postwater")
 
 
