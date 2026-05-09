@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    "ViewTemplate"
+    "ViewTemplate",
+    "modelsApp",
 ]
 
 MIDDLEWARE = [
@@ -63,6 +64,7 @@ TEMPLATES = [
                  BASE_DIR / "ViewTemplate\\templates\\TimeDz",
                  BASE_DIR / "ViewTemplate\\templates\\RecipesDz",
                  BASE_DIR / "formsApp\\templates",
+                 BASE_DIR / "modelsApp\\templates",
                  BASE_DIR / "formsApp\\Water",
                  BASE_DIR / "formsApp\\market",
                  BASE_DIR / "ViewTemplate\\templates\\HelloWorld"],

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Телефонна книга</title>
+</head>
+<body>
+
+<a href="{% url 'add_contact' %}">
+    Add contact
+</a>
+
+<hr>
+
+{% for contact in contacts %}
+    <div>
+        <h3>{{ contact.name }} {{ contact.surname }}</h3>
+
+        <p>Email: {{ contact.email }}</p>
+        <p>Телефон: {{ contact.number }}</p>
+        <p>Примітки: {{ contact.notes }}</p>
+
+        <hr>
+    </div>
+{% empty %}
+    <p>Контактів немає</p>
+{% endfor %}
+
+</body>
+</html>
