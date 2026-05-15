@@ -21,7 +21,7 @@ from ViewTemplate import views
 from config import settings
 
 urlpatterns = [
-   # path('admin/', admin.site.urls),
+   path('admin/', admin.site.urls),
    path("templates/", include("ViewTemplate.urls")),
    path("forms/", include("formsApp.urls")),
    path("models/", include("modelsApp.urls")),
@@ -31,7 +31,7 @@ urlpatterns = [
    # path("football/", views.football, name="football"),
    # path("hockey/", views.hockey, name="hockey"),
    # path("basketball/", views.basketball, name="basketball"),
-   path('', views.recipes, name='recp'),
+   #path('', views.recipes, name='recp'),
 ]
 
 if settings.DEBUG:

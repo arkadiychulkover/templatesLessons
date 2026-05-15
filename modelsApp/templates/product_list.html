@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+
+<a href="{% url 'create_product' %}">
+    Add product
+</a>
+
+<hr>
+
+{% for product in products %}
+    <div>
+        <h3>{{ product.name }} {{ product.price }}</h3>
+        <p>Description: {{ contact.description }}</p>
+        <hr>
+    </div>
+{% empty %}
+    <p>No products</p>
+{% endfor %}
+
+</body>
+</html>
