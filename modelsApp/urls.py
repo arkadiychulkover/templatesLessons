@@ -18,4 +18,13 @@ urlpatterns = [
     path('readers/', views.all_readers),
     path('books/available/', views.available_books),
     path('readers/<int:pk>/books/', views.reader_books),
+
+    path('customers/', views.customers_list),
+    path('sellers/', views.sellers_list),
+    path('products/', views.products_list),
+    path('sales/', views.sales_list),
+
+    path('addcustomers/', views.customer_view),
+    path('addsellers/', views.seller_view),
+    path('addsales/', views.sale_view),
 ]
