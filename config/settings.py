@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     "ViewTemplate",
     "modelsApp",
+    "adminPraktika",
 ]
 
 MIDDLEWARE = [
@@ -67,6 +68,8 @@ TEMPLATES = [
                  BASE_DIR / "modelsApp\\templates",
                  BASE_DIR / "formsApp\\Water",
                  BASE_DIR / "formsApp\\market",
+                 BASE_DIR / "formsApp\\market",
+                 BASE_DIR / "adminPraktika\\templates",
                  BASE_DIR / "ViewTemplate\\templates\\HelloWorld"],
         'APP_DIRS': True,
         'OPTIONS': {
