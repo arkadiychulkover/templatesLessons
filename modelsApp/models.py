@@ -3,22 +3,33 @@ import uuid
 from django.db.models import Avg
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.contrib.auth.models import User
+from django.utils.text import slugify
 
 class Product(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=100)
+    slug = models.SlugField(max_length=120, blank=True)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     description = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     imagePath = models.CharField(max_length=255, null=True)
+    is_cative = models.BooleanField(default=False)
+    stock = models.IntegerField(default=0, validators=[MinValueValidator(0)], verbose_name="Stock Quantity")
+    discount_price = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True, verbose_name="Discount Price")
 
     def __str__(self):
         return f"{self.name} - ${self.price} - {self.description} - Created at: {self.created_at} - Updated at: {self.updated_at} - Image Path: {self.imagePath}"
      
+    def get_final_price(self):
+        if self.discount_price and self.discount_price < self.price:
+            return self.discount_price
+        return self.price
 
     class Meta:
         db_table = 'dj_product'
+        verbose_name = "Product"
+        verbose_name_plural = "Products"
 
 
 

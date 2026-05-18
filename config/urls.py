@@ -26,6 +26,7 @@ urlpatterns = [
    path("forms/", include("formsApp.urls")),
    path("models/", include("modelsApp.urls")),
    path("adminka/", include("adminPraktika.urls")),
+    path("auth/", include("adminkaLesson.urls")),
    # path("", views.hello_world_eng, name="index"),
    # path("<str:lan>/", views.hello_world, name="helloWorld"),
    # path("", views.sport_index, name="index"),

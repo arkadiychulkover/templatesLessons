@@ -117,3 +117,47 @@ def customer_view(request):
         form = CustomerForm()
 
     return render(request, "defoult_form.html", {'form': form})
+
+
+
+
+
+@csrf_exempt
+def delete_product(request, pk):
+    try:        
+        if request.method == 'DELETE':
+            Product.objects.filter(id=pk).delete()
+            return JsonResponse({"status": "OK"}, status=200)
+        return JsonResponse({"error": "Method not allowed"}, status=405)
+    except Exception as e:
+        return JsonResponse({"error": str(e)}, status=400)
+    
+@csrf_exempt
+def delete_sale(request, pk):
+    try:        
+        if request.method == 'DELETE':
+            Sale.objects.filter(id=pk).delete()
+            return JsonResponse({"status": "OK"}, status=200)
+        return JsonResponse({"error": "Method not allowed"}, status=405)
+    except Exception as e:
+        return JsonResponse({"error": str(e)}, status=400)
+    
+@csrf_exempt
+def delete_seller(request, pk):
+    try:        
+        if request.method == 'DELETE':
+            Seller.objects.filter(id=pk).delete()
+            return JsonResponse({"status": "OK"}, status=200)
+        return JsonResponse({"error": "Method not allowed"}, status=405)
+    except Exception as e:
+        return JsonResponse({"error": str(e)}, status=400)
+    
+@csrf_exempt
+def delete_customer(request, pk):
+    try:        
+        if request.method == 'DELETE':
+            Customer.objects.filter(id=pk).delete()
+            return JsonResponse({"status": "OK"}, status=200)
+        return JsonResponse({"error": "Method not allowed"}, status=405)
+    except Exception as e:
+        return JsonResponse({"error": str(e)}, status=400)

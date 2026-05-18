@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "ViewTemplate",
     "modelsApp",
     "adminPraktika",
+    "adminkaLesson"
 ]
 
 MIDDLEWARE = [
@@ -70,6 +71,7 @@ TEMPLATES = [
                  BASE_DIR / "formsApp\\market",
                  BASE_DIR / "formsApp\\market",
                  BASE_DIR / "adminPraktika\\templates",
+                 BASE_DIR / "adminkaLesson\\templates",
                  BASE_DIR / "ViewTemplate\\templates\\HelloWorld"],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -137,5 +139,7 @@ STATICFILES_DIRS = [
 ]
 
 import os
-MEDIA_URL = "/media/"
-MEDIA_ROOT = os.path.join(BASE_DIR, "config" "wwwroot", "media")
+MEDIA_URL = "media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "config", "wwwroot", "images")
+
+AUTH_USER_MODEL = "adminkaLesson.MyUser"
